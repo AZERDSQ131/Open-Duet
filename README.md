@@ -2,6 +2,8 @@
 
 An open-source mobile shell for a personal agent.
 
+<img width="1896" height="1503" alt="image" src="https://github.com/user-attachments/assets/c4ff3912-04ad-43c5-9a0e-4398d245bb13" />
+
 Open Duet is a high-fidelity interface experiment inspired by Anthropic's Duet: a warm, quiet workspace where chat, tasks and generated artifacts live together. The difference is ownership — the UI is open, and chat can run on **your own Hermes Agent** instead of a hosted assistant.
 
 > Independent project. Not affiliated with, endorsed by, or connected to Anthropic. "Claude" and "Duet" are trademarks of Anthropic, referenced only to describe the source of the design inspiration.
