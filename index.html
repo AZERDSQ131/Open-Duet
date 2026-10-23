@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Open Duet — interactive mockup</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-mark" viewBox="0 0 100 100">
+    <ellipse cx="50" cy="50" rx="20" ry="21.4" fill="#D97757"/>
+    <path d="M11 56.5C20 56.5 24.5 48.5 33.5 48.5C42.5 48.5 44.5 59.5 54 59.5C63.5 59.5 66 49 74.5 49C82 49 85.5 53 89 55" fill="none" stroke="currentColor" stroke-width="5.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 18 18">
+    <path d="M3 5.6h11.5M3 9h7.4M3 12.4h9.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 18 18">
+    <rect x="2.1" y="4.3" width="13.8" height="9.6" rx="2.1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M3.1 5.6 9 9.9l5.9-4.3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-sort" viewBox="0 0 18 18">
+    <path d="M5.7 3.2v11.6M5.7 3.2 3.2 5.7M5.7 3.2l2.5 2.5M12.3 14.8V3.2M12.3 14.8l-2.5-2.5M12.3 14.8l2.5-2.5" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 18 18">
+    <circle cx="8" cy="8" r="5.1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="m11.8 11.8 3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-plus" viewBox="0 0 18 18">
+    <path d="M9 3.3v11.4M3.3 9h11.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mic" viewBox="0 0 18 18">
+    <rect x="6.1" y="2.3" width="5.8" height="9" rx="2.9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M3.8 8.6v1a5.2 5.2 0 0 0 10.4 0v-1M9 14.8v1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-wave" viewBox="0 0 18 18">
+    <path d="M3.2 7.4v3.2M6.1 5.4v7.2M9 3.2v11.6M11.9 5.9v6.2M14.8 7.2v3.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-chevron" viewBox="0 0 18 18">
+    <path d="m7 3.8 5.2 5.2L7 14.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-back" viewBox="0 0 18 18">
+    <path d="M11 3.8 5.8 9l5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 18 18">
+    <path d="m3.4 9.3 3.5 3.5 7.7-7.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 18 18">
+    <path d="m4.2 4.2 9.6 9.6M13.8 4.2l-9.6 9.6" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 18 18">
+    <path d="M15.2 8.6c0 3.2-2.8 5.8-6.2 5.8-.7 0-1.4-.1-2-.3l-3.4 1.2.9-3.1a5.4 5.4 0 0 1-1.6-3.8C2.9 5.3 5.7 2.8 9 2.8s6.2 2.5 6.2 5.8Z" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/>
+    <path d="M5.7 8.7c.6-.8 1.2.5 1.9 0s1.2.5 1.9 0 1.2.5 1.9 0" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-tasks" viewBox="0 0 18 18">
+    <path d="m2.4 4.7 1.6 1.6L7.2 3.1M9.2 5.5h5.9M2.4 12.1l1.6 1.6 3.2-3.2M9.2 12.9h5.9" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-make" viewBox="0 0 18 18">
+    <path d="M14 9.2V5.4A2.4 2.4 0 0 0 11.6 3H5.4A2.4 2.4 0 0 0 3 5.4v6.2A2.4 2.4 0 0 0 5.4 14h4.1" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+    <path d="M8.5 5.2v4.4M6.3 7.4h4.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="m10.1 14.1 4.2-4.2a1.45 1.45 0 0 1 2 2l-4.2 4.2-2.6.6.6-2.6Z" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-inbox" viewBox="0 0 18 18">
+    <path d="M3.2 8.9 5.2 4.2A2.2 2.2 0 0 1 7.2 2.9h3.6a2.2 2.2 0 0 1 2 .1l2 4.9v4.4a2.3 2.3 0 0 1-2.3 2.3H5.5a2.3 2.3 0 0 1-2.3-2.3V8.9Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M3.2 9.1h3.1l1.1 2h3.2l1.1-2h3.1" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-doc" viewBox="0 0 18 18">
+    <path d="M4.3 2.6h6.1l3.3 3.3v9.5H4.3V2.6Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M10.2 2.8v3.3h3.3M6.5 9h5.1M6.5 11.7h3.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-slides" viewBox="0 0 18 18">
+    <rect x="2.4" y="3.4" width="13.2" height="9.1" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M6.2 6.6h4.4M6.2 9.1h6.4M9 12.5v2.2M6.4 15.1h5.2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-palette" viewBox="0 0 18 18">
+    <path d="M9 2.6a6.4 6.4 0 1 0 0 12.8c1 0 1.4-.6 1.4-1.3 0-.7-.5-1.1-.5-1.7 0-.7.5-1.2 1.3-1.2h1.1c1.9 0 3.1-1.3 3.1-3.2C15.4 5 12.5 2.6 9 2.6Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+    <circle cx="6" cy="7" r=".9" fill="currentColor"/><circle cx="9" cy="5.5" r=".9" fill="currentColor"/><circle cx="12" cy="7" r=".9" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-more" viewBox="0 0 18 18">
+    <circle cx="4" cy="9" r="1.15" fill="currentColor"/><circle cx="9" cy="9" r="1.15" fill="currentColor"/><circle cx="14" cy="9" r="1.15" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-layers" viewBox="0 0 18 18">
+    <path d="M9 2.6 15.4 6 9 9.4 2.6 6 9 2.6Z" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+    <path d="m2.9 9 6.1 3.3L15.1 9M2.9 12l6.1 3.3L15.1 12" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-globe" viewBox="0 0 18 18">
+    <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" stroke-width="1.25"/>
+    <ellipse cx="9" cy="9" rx="2.9" ry="6.2" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <path d="M2.9 9h12.2M3.9 5.6h10.2M3.9 12.4h10.2" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-chart" viewBox="0 0 18 18">
+    <path d="M3 15V3M3 15h12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M6 12.2V9.4M9 12.2V6.4M12 12.2V4.6M15 12.2V7.4" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-file" viewBox="0 0 18 18">
+    <path d="M4.6 2.7h5.5L13.4 6v9.3H4.6V2.7Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M9.9 2.9V6h3.2M6.7 9.2h4.6M6.7 11.7h3.2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 18 18">
+    <path d="m2.8 8.4 6.2-5.5 6.2 5.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.6 7.4v7.7h8.8V7.4M7.4 15.1v-4.4h3.2v4.4" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-gear" viewBox="0 0 18 18">
+    <circle cx="9" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M9 2.4v1.7M9 13.9v1.7M2.4 9h1.7M13.9 9h1.7M4.3 4.3l1.2 1.2M12.5 12.5l1.2 1.2M13.7 4.3l-1.2 1.2M5.5 12.5l-1.2 1.2" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-code" viewBox="0 0 18 18">
+    <path d="m6.4 5.2-4 3.8 4 3.8M11.6 5.2l4 3.8-4 3.8M10.2 3.1 7.8 14.9" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 18 18">
+    <path d="M9 14.4V3.6M4.2 8.4 9 3.6l4.8 4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-copy" viewBox="0 0 18 18">
+    <rect x="6.1" y="6.1" width="8.2" height="8.4" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.25"/>
+    <path d="M11.6 6V4.7c0-1-.8-1.8-1.8-1.8H4.5c-1 0-1.8.8-1.8 1.8v5.7c0 1 .8 1.8 1.8 1.8h1.6" fill="none" stroke="currentColor" stroke-width="1.25"/>
+  </symbol>
+  <symbol id="i-edit" viewBox="0 0 18 18">
+    <path d="m10.9 3.8 3.3 3.3M4.3 13.7l.8-3.9 7.2-7.2a1.7 1.7 0 0 1 2.4 2.4l-7.2 7.2-3.2.8Z" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-share" viewBox="0 0 18 18">
+    <path d="M9 11.8V2.9M5.6 6.1 9 2.7l3.4 3.4M4.1 9.4v4.1c0 .9.7 1.6 1.6 1.6h6.6c.9 0 1.6-.7 1.6-1.6V9.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 18 18">
+    <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <path d="M9 5.3V9l2.5 1.7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 18 18">
+    <rect x="2.8" y="4" width="12.4" height="11" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.25"/>
+    <path d="M2.8 7.6h12.4M6.2 2.7v2.5M11.8 2.7v2.5" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-image" viewBox="0 0 18 18">
+    <rect x="2.6" y="3.2" width="12.8" height="11.6" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.25"/>
+    <circle cx="6.6" cy="7.2" r="1.15" fill="currentColor"/>
+    <path d="m3.6 13 3.9-4.1 2.7 2.6 2-2 2.2 2.3" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-clip" viewBox="0 0 18 18">
+    <path d="m6.4 9.7 4.4-4.4a2.5 2.5 0 0 1 3.6 3.6l-5.3 5.3a4 4 0 0 1-5.7-5.7l5.2-5.2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-check-circle" viewBox="0 0 18 18">
+    <circle cx="9" cy="9" r="6.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <path d="m6 9.2 2 2 4-4.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-dots" viewBox="0 0 18 18">
+    <circle cx="6" cy="9" r=".9" fill="currentColor"/><circle cx="9" cy="9" r=".9" fill="currentColor"/><circle cx="12" cy="9" r=".9" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<main class="stage">
+  <div class="device">
+    <div class="phone" id="phone">
+      <div class="app" id="app">
+
+        <header class="topbar">
+          <button class="orb" type="button" data-action="open-drawer" aria-label="Open menu">
+            <svg class="icon icon--menu"><use href="#i-menu"/></svg>
+          </button>
+          <button class="orb orb--brand" type="button" data-action="open-voice" aria-label="Talk to Open Duet">
+            <svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg>
+          </button>
+          <button class="orb avatar" type="button" data-action="open-drawer" aria-label="Open profile">AF</button>
+        </header>
+
+        <main class="views">
+
+          <!-- ------------------------------------------------------- chat -->
+          <section class="view view--chat is-active" data-view="chat" aria-label="Chat">
+            <div class="chat-scroll" id="chatScroll">
+
+              <article class="conversation is-active" data-conv="chicago">
+                <button class="ctx" type="button" data-action="open-drawer">
+                  <span class="ctx__icon ctx__icon--cream" aria-hidden="true">✋</span>
+                  <span class="ctx__label">Chicago location opening</span>
+                  <svg class="thread" width="27" height="19" viewBox="0 0 27 19" aria-hidden="true"><path d="M25 1c0 9-5.5 16-20 16" fill="none" stroke="#DEDDD9" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="messages">
+                  <p class="bubble bubble--w1">The Chicago location opens in 26 days. I built the opening checklist from your last two openings: 41 items.</p>
+                  <p class="bubble bubble--w2">33 are done or on track. 7 I’m watching. 1 needs you today.</p>
+                  <p class="bubble bubble--w3">Health permit: the county form is filled. The fee is $640.</p>
+                </div>
+
+                <div class="approval" data-approval="chat">
+                  <div class="approval__pending">
+                    <div class="approval__head">
+                      <span class="approval__amount">$640.00</span>
+                      <span class="approval__expiry">Expires in 8 min</span>
+                    </div>
+                    <div class="approval__merchant">County health permit</div>
+                    <div class="approval__row">
+                      <span>Health permit fee</span>
+                      <svg class="icon icon--chef"><use href="#i-chevron"/></svg>
+                    </div>
+                    <button class="btn btn--dark" type="button" data-action="approve">Approve</button>
+                    <button class="btn btn--ghost" type="button" data-action="defer">Not now</button>
+                  </div>
+                  <div class="approval__done">
+                    <span class="done-badge"><svg class="icon"><use href="#i-check"/></svg></span>
+                    <div>
+                      <div class="done-title">Health permit approved</div>
+                      <div class="done-sub">$640.00 · Receipt filed in Chicago</div>
+                    </div>
+                    <button class="text-link" type="button" data-action="toast-receipt">View</button>
+                  </div>
+                  <div class="approval__later">
+                    <span class="later-badge"><svg class="icon"><use href="#i-clock"/></svg></span>
+                    <div>
+                      <div class="done-title">We’ll ask again at 5:00 PM</div>
+                      <div class="done-sub">The county form is saved and ready.</div>
+                    </div>
+                    <button class="text-link" type="button" data-action="undo-defer">Undo</button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="conversation" data-conv="brief">
+                <button class="ctx" type="button" data-action="open-drawer">
+                  <span class="ctx__icon ctx__icon--check"><svg class="icon"><use href="#i-check"/></svg></span>
+                  <span class="ctx__label">Morning brief</span>
+                  <svg class="thread" width="27" height="19" viewBox="0 0 27 19" aria-hidden="true"><path d="M25 1c0 9-5.5 16-20 16" fill="none" stroke="#DEDDD9" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </button>
+                <div class="messages">
+                  <div class="brief">
+                    <ul>
+                      <li><span class="pill"><span class="mini mini--blue"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="5.2" fill="none" stroke="#4B86C8" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="24 9"/></svg></span>Hiring</span> : Jenn’s other offer expires at 6 p.m. All 3 finalists are booked for today. Invites are ready.</li>
+                      <li><span class="pill"><span class="mini mini--blue"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="5.2" fill="none" stroke="#4B86C8" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="24 9"/></svg></span>Northfield</span> : They redlined the $410K renewal and want Net 60. The changes are summarized.</li>
+                      <li><span class="pill"><span class="mini mini--cream">✋</span>Chicago location</span> : Opens Nov 14. The health permit needs your OK and $640.</li>
+                      <li><span class="pill"><span class="mini mini--cream">✋</span>Series A</span> : Harbor meets Thursday at 10. The deck is rebuilt with Q3. 2 slides need your eye.</li>
+                      <li><span class="pill"><span class="mini mini--blue"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="5.2" fill="none" stroke="#4B86C8" stroke-width="2.1" stroke-linecap="round" stroke-dasharray="24 9"/></svg></span>Customers</span> : 27 wrong delivery orders this weekend. 19 from Valencia. Refunds are drafted.</li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="conversation" data-conv="github">
+                <button class="ctx" type="button" data-action="open-drawer">
+                  <span class="ctx__icon ctx__icon--code"><svg class="icon"><use href="#i-code"/></svg></span>
+                  <span class="ctx__label">GitHub setup</span>
+                  <svg class="thread" width="27" height="19" viewBox="0 0 27 19" aria-hidden="true"><path d="M25 1c0 9-5.5 16-20 16" fill="none" stroke="#DEDDD9" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </button>
+                <div class="messages">
+                  <div class="msg msg--me"><p class="bubble bubble--me">Can you connect to my GitHub?</p></div>
+                  <p class="bubble">Yes, though you need to do the connecting yourself. Use <button class="inline-link" type="button" data-action="connect-github">Connect GitHub</button>, and once that’s done I can read your repos and work on them with you.</p>
+                  <div class="msg-reveal" data-github-reveal hidden>
+                    <div class="msg msg--me"><p class="bubble bubble--me">It’s connected</p><span class="seen">Seen</span></div>
+                    <p class="bubble">I can see 12 repos. <strong>null-district</strong> has 3 open pull requests — want me to review the cover art one?</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+            <div class="composer-wrap">
+              <form class="composer" data-composer="chat">
+                <button class="icon-btn composer__plus" type="button" data-action="attach" aria-label="Add attachment">
+                  <svg class="icon icon--plus"><use href="#i-plus"/></svg>
+                </button>
+                <input class="composer__input" type="text" placeholder="Message Open Duet" aria-label="Message Open Duet" autocomplete="off">
+                <button class="icon-btn composer__mic" type="button" data-action="open-voice" aria-label="Voice message">
+                  <svg class="icon icon--mic"><use href="#i-mic"/></svg>
+                </button>
+                <button class="send" type="submit" aria-label="Send">
+                  <svg class="icon send__wave"><use href="#i-wave"/></svg>
+                  <svg class="icon send__arrow"><use href="#i-arrow-up"/></svg>
+                </button>
+              </form>
+            </div>
+          </section>
+
+          <!-- ------------------------------------------------------ tasks -->
+          <section class="view view--tasks" data-view="tasks" aria-label="Tasks">
+            <div class="tasks-top">
+              <button class="group-pill" type="button" data-action="open-drawer">
+                <svg class="icon"><use href="#i-mail"/></svg>
+                <span id="channelLabel">#null-district</span>
+              </button>
+
+              <div class="tasks-head">
+                <div class="tabs">
+                  <button class="tab-title is-active" type="button" data-tasks-tab="active">Active</button>
+                  <button class="tab-title" type="button" data-tasks-tab="upnext">Up next</button>
+                </div>
+                <div class="tasks-tools">
+                  <button class="icon-btn" type="button" data-action="sort-tasks" aria-label="Sort tasks">
+                    <svg class="icon"><use href="#i-sort"/></svg>
+                  </button>
+                  <button class="icon-btn" type="button" data-action="toggle-task-search" aria-label="Search tasks">
+                    <svg class="icon"><use href="#i-search"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="tasks-search" id="tasksSearchWrap" hidden>
+                <svg class="icon"><use href="#i-search"/></svg>
+                <input id="taskSearch" type="text" placeholder="Search tasks" aria-label="Search tasks" autocomplete="off">
+                <button class="icon-btn" type="button" data-action="close-task-search" aria-label="Close search">
+                  <svg class="icon"><use href="#i-x"/></svg>
+                </button>
+              </div>
+
+              <div class="list-meta">
+                <span id="taskMetaLeft">6 open</span>
+                <span class="list-meta__right">Updated just now</span>
+              </div>
+            </div>
+
+            <div class="task-scroll" id="taskScroll">
+              <div id="activeTasks"></div>
+              <div id="upNextTasks" hidden></div>
+            </div>
+
+            <button class="fab" type="button" data-action="new-task" aria-label="New task">
+              <svg class="icon"><use href="#i-plus"/></svg>
+            </button>
+          </section>
+
+          <!-- ------------------------------------------------------- make -->
+          <section class="view view--make" data-view="make" aria-label="Make">
+            <div class="make-scroll" id="makeScroll">
+              <div class="search-wrap">
+                <label class="searchbar" for="makeSearch">
+                  <svg class="icon"><use href="#i-search"/></svg>
+                  <input id="makeSearch" type="text" placeholder="Search" autocomplete="off">
+                </label>
+                <div class="search-pop" id="makeResults" hidden></div>
+              </div>
+
+              <div class="feature" id="featureCard">
+                <button class="feature__x icon-btn" type="button" data-action="dismiss-feature" aria-label="Dismiss">
+                  <svg class="icon"><use href="#i-x"/></svg>
+                </button>
+                <button class="preview" type="button" data-action="open-artifact" data-artifact="q3">
+                  <span class="preview__title">Q3 variance</span>
+                  <span class="preview__bars"><span style="width:100%"></span><span style="width:85%"></span><span style="width:61%"></span></span>
+                  <span class="preview__time"><span>Read time</span><span>2 min</span></span>
+                </button>
+                <button class="feature__ask" type="button" data-action="open-artifact" data-artifact="q3">A</button>
+              </div>
+
+              <div class="section-head">Get started</div>
+              <div class="rail">
+                <button class="start-card" type="button" data-action="open-artifact" data-artifact="daily">
+                  <span class="start-card__icon"><svg class="icon"><use href="#i-tasks"/></svg></span>
+                  <span class="start-card__text">
+                    <span class="start-card__title">Daily todo</span>
+                    <span class="start-card__sub">Today’s list, refreshed every morning</span>
+                  </span>
+                </button>
+                <button class="start-card" type="button" data-action="open-artifact" data-artifact="email">
+                  <span class="start-card__icon"><svg class="icon"><use href="#i-inbox"/></svg></span>
+                  <span class="start-card__text">
+                    <span class="start-card__title">Email triage</span>
+                    <span class="start-card__sub">What needs a reply, sorted by urgency</span>
+                  </span>
+                </button>
+              </div>
+
+              <div class="section-head section-head--artifacts">Artifacts</div>
+              <div class="rail rail--artifacts" id="artifactRail"></div>
+
+              <div class="rail rail--chips">
+                <button class="chip" type="button" data-make-type="document" data-label="Describe the document to build">
+                  <span class="chip__icon chip__icon--blue"><svg class="icon"><use href="#i-doc"/></svg></span>Document
+                </button>
+                <button class="chip" type="button" data-make-type="presentation" data-label="Describe the presentation to build">
+                  <span class="chip__icon chip__icon--orange"><svg class="icon"><use href="#i-slides"/></svg></span>Presentation
+                </button>
+                <button class="chip" type="button" data-make-type="design" data-label="Describe the design to build">
+                  <span class="chip__icon chip__icon--violet"><svg class="icon"><use href="#i-palette"/></svg></span>Design
+                </button>
+              </div>
+            </div>
+
+            <div class="composer-wrap composer-wrap--make">
+              <form class="composer composer--make" data-composer="make">
+                <input class="composer__input" id="makeInput" type="text" placeholder="Describe what to build" aria-label="Describe what to build" autocomplete="off">
+                <button class="send send--make" type="submit" aria-label="Create">
+                  <svg class="icon send__mic"><use href="#i-mic"/></svg>
+                  <svg class="icon send__arrow"><use href="#i-arrow-up"/></svg>
+                </button>
+              </form>
+            </div>
+          </section>
+
+        </main>
+
+        <nav class="tabbar" aria-label="Navigation">
+          <button class="tab is-active" type="button" data-tab="chat">
+            <svg class="icon"><use href="#i-chat"/></svg><span>Chat</span>
+          </button>
+          <button class="tab" type="button" data-tab="tasks">
+            <svg class="icon"><use href="#i-tasks"/></svg><span>Tasks</span>
+          </button>
+          <button class="tab" type="button" data-tab="make">
+            <svg class="icon"><use href="#i-make"/></svg><span>Make</span>
+          </button>
+        </nav>
+
+        <!-- attach popover -->
+        <div class="attach-menu" id="attachMenu" hidden>
+          <button type="button" data-action="attach-pick" data-pick="Photo"><span class="attach-menu__ico"><svg class="icon"><use href="#i-image"/></svg></span>Photo</button>
+          <button type="button" data-action="attach-pick" data-pick="File"><span class="attach-menu__ico"><svg class="icon"><use href="#i-clip"/></svg></span>File</button>
+          <button type="button" data-action="attach-pick" data-pick="Task"><span class="attach-menu__ico"><svg class="icon"><use href="#i-tasks"/></svg></span>Task</button>
+        </div>
+
+      </div>
+
+      <!-- ------------------------------------------------------- drawer -->
+      <div class="drawer" id="drawer" aria-hidden="true">
+        <div class="drawer__scrim" data-action="close-drawer"></div>
+        <aside class="drawer__panel" aria-label="Menu">
+          <header class="drawer__head">
+            <span class="brand-mini"><svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg></span>
+            <span class="drawer__brand">Open Duet</span>
+            <button class="icon-btn drawer__close" type="button" data-action="close-drawer" aria-label="Close menu">
+              <svg class="icon"><use href="#i-x"/></svg>
+            </button>
+          </header>
+
+          <div class="drawer__scroll">
+            <button class="everything" type="button" data-action="everything">
+              <span class="everything__icon"><svg class="icon"><use href="#i-layers"/></svg></span>
+              <span class="everything__text">
+                <span class="everything__title">Everything</span>
+                <span class="everything__sub">All chat context across every channel</span>
+              </span>
+            </button>
+
+            <div class="drawer__label">Chats</div>
+            <button class="drawer-row" type="button" data-conv-link="brief">
+              <span class="row-ico row-ico--green"><svg class="icon"><use href="#i-check"/></svg></span>
+              <span class="drawer-row__text"><span>Morning brief</span><small>Today · 5 things</small></span>
+            </button>
+            <button class="drawer-row" type="button" data-conv-link="chicago">
+              <span class="row-ico row-ico--cream">✋</span>
+              <span class="drawer-row__text"><span>Chicago location opening</span><small>1 needs you today</small></span>
+            </button>
+            <button class="drawer-row" type="button" data-conv-link="github">
+              <span class="row-ico row-ico--violet"><svg class="icon"><use href="#i-code"/></svg></span>
+              <span class="drawer-row__text"><span>GitHub setup</span><small>Connected · 12 repos</small></span>
+            </button>
+
+            <div class="drawer__label drawer__label--channels">
+              <span>Channels</span>
+              <button class="mini-link" type="button" data-action="new-channel">+ New</button>
+            </div>
+            <div id="channelList">
+              <button class="drawer-row" type="button" data-channel="null-district">
+                <span class="row-ico row-ico--peach"><svg class="icon"><use href="#i-layers"/></svg></span>
+                <span class="drawer-row__text"><span>Null District</span><small>Game · build &amp; art</small></span>
+              </button>
+              <button class="drawer-row" type="button" data-channel="tokyo-trip">
+                <span class="row-ico row-ico--blue"><svg class="icon"><use href="#i-globe"/></svg></span>
+                <span class="drawer-row__text"><span>Tokyo trip</span><small>Dates set · hotel to pick</small></span>
+              </button>
+              <button class="drawer-row" type="button" data-channel="q3-planning">
+                <span class="row-ico row-ico--amber"><svg class="icon"><use href="#i-chart"/></svg></span>
+                <span class="drawer-row__text"><span>Q3 planning</span><small>Reading 2 of 4 · pricing</small></span>
+              </button>
+              <button class="drawer-row" type="button" data-channel="contracts">
+                <span class="row-ico row-ico--violet"><svg class="icon"><use href="#i-file"/></svg></span>
+                <span class="drawer-row__text"><span>Contracts</span><small>Waiting on Tomas to sign</small></span>
+              </button>
+              <button class="drawer-row" type="button" data-channel="home-admin">
+                <span class="row-ico row-ico--green"><svg class="icon"><use href="#i-home"/></svg></span>
+                <span class="drawer-row__text"><span>Home admin</span><small>Passport and expenses</small></span>
+              </button>
+            </div>
+            <div class="new-channel" id="newChannel" hidden>
+              <input type="text" id="newChannelInput" placeholder="Channel name" autocomplete="off">
+              <button class="btn btn--dark btn--sm" type="button" data-action="create-channel">Create</button>
+            </div>
+          </div>
+
+          <footer class="drawer__foot">
+            <span class="orb avatar avatar--sm">AF</span>
+            <span class="drawer__profile"><span>Alex Fournier</span><small>Personal · Duet Pro</small></span>
+            <button class="icon-btn" type="button" data-action="settings" aria-label="Settings"><svg class="icon"><use href="#i-gear"/></svg></button>
+          </footer>
+        </aside>
+      </div>
+
+      <!-- --------------------------------------------------- task detail -->
+      <aside class="detail" id="detail" aria-hidden="true" aria-label="Task detail">
+        <header class="detail__head">
+          <button class="round-btn" type="button" data-action="close-detail" aria-label="Back">
+            <svg class="icon"><use href="#i-back"/></svg>
+          </button>
+          <div class="detail__pill" id="detailPill"></div>
+          <button class="round-btn" type="button" data-action="detail-more" aria-label="More">
+            <svg class="icon"><use href="#i-more"/></svg>
+          </button>
+        </header>
+        <div class="detail__scroll" id="detailBody"></div>
+      </aside>
+
+      <!-- ------------------------------------------------------ artifact -->
+      <aside class="artifact" id="artifact" aria-hidden="true" aria-label="Artifact">
+        <header class="artifact__head">
+          <button class="round-btn" type="button" data-action="close-artifact" aria-label="Close">
+            <svg class="icon"><use href="#i-x"/></svg>
+          </button>
+          <span class="artifact__label">Artifact</span>
+          <button class="round-btn" type="button" data-action="share-artifact" aria-label="Share">
+            <svg class="icon"><use href="#i-share"/></svg>
+          </button>
+        </header>
+        <div class="artifact__scroll" id="artifactBody"></div>
+        <div class="artifact__actions">
+          <button class="btn btn--dark" type="button" data-action="artifact-to-chat">Send to chat</button>
+        </div>
+      </aside>
+
+      <!-- --------------------------------------------------------- voice -->
+      <div class="voice" id="voice" aria-hidden="true">
+        <div class="voice__glow"></div>
+        <button class="voice__close round-btn" type="button" data-action="close-voice" aria-label="Close">
+          <svg class="icon"><use href="#i-x"/></svg>
+        </button>
+        <div class="voice__center">
+          <div class="voice__halo"></div>
+          <div class="voice__mark"><svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg></div>
+          <div class="voice__label" id="voiceLabel">Listening…</div>
+          <div class="voice__hint">Speak naturally. I’ll take it from here.</div>
+        </div>
+        <div class="voice__foot">
+          <button class="voice__finish" type="button" data-action="finish-voice">
+            <svg class="icon"><use href="#i-wave"/></svg>
+            Finish
+          </button>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------ new task -->
+      <div class="sheet" id="newTaskSheet" aria-hidden="true">
+        <div class="sheet__scrim" data-action="close-new-task"></div>
+        <div class="sheet__panel" role="dialog" aria-label="New task">
+          <div class="sheet__grab"></div>
+          <h2 class="sheet__title">New task</h2>
+          <p class="sheet__sub">Tell Open Duet what needs to happen. It lands in Tasks.</p>
+          <input class="sheet__input" id="newTaskInput" type="text" placeholder="What needs doing?" autocomplete="off">
+          <div class="suggest-row">
+            <button class="suggest" type="button" data-suggest="Book the Tokyo hotel">Book the Tokyo hotel</button>
+            <button class="suggest" type="button" data-suggest="Send the deck to Maya">Send the deck to Maya</button>
+          </div>
+          <button class="btn btn--dark sheet__cta" type="button" data-action="create-task">Create task</button>
+        </div>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite">
+        <span class="toast__ico"><svg class="icon"><use href="#i-check"/></svg></span>
+        <span id="toastText"></span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

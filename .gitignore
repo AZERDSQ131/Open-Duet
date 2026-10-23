@@ -1,0 +1,29 @@
+# OS / logs
+.DS_Store
+*.log
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Design references and generated screenshots (not part of the source)
+/*.png
+/*.jpg
+/shots/
+
+# Dependencies and caches
+node_modules/
+mobile/node_modules/
+.expo/
+mobile/.expo/
+mobile/.expo-shared/
+dist/
+web-build/
+
+# Build artifacts / secrets
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
